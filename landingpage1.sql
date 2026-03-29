@@ -8,7 +8,7 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
--- Database: `db_landingpage`
+-- Database: `landingpage1`
 --
 
 -- --------------------------------------------------------

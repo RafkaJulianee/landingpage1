@@ -47,7 +47,7 @@ while ($row = $stmt->fetch()) {
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+      <a href="index.php" class="logo d-flex align-items-center me-auto me-lg-0">
         
         <h1><?= htmlspecialchars($settings['site_title'] ?? 'Zifood') ?><span>.</span></h1>
       </a>
