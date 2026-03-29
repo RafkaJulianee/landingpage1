@@ -40,12 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
         if(empty($imagePath)) $imagePath = 'assets/img/menu/menu-item-1.png'; // Default
         $stmt = $pdo->prepare("INSERT INTO menu_items (category, name, description, price, image) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$category, $name, $description, $price, $imagePath]);
-        $success = "New menu added!";
+        $success = "Menu baru berhasil ditambahkan!";
     } elseif ($_POST['action'] == 'edit') {
         $id = (int)$_POST['id'];
         $stmt = $pdo->prepare("UPDATE menu_items SET category=?, name=?, description=?, price=?, image=? WHERE id=?");
         $stmt->execute([$category, $name, $description, $price, $imagePath, $id]);
-        $success = "Menu updated!";
+        $success = "Menu berhasil diperbarui!";
     }
 }
 
@@ -62,11 +62,11 @@ $catColors = [
 ?>
 <div class="d-flex justify-content-between align-items-center mb-4 pb-2">
     <div>
-        <h2 class="fw-bold mb-0">Menu List 🙌</h2>
-        <p class="text-muted mt-1" style="font-size: 0.9rem;">Manage offering lists efficiently</p>
+        <h2 class="fw-bold mb-0">Daftar Menu 🙌</h2>
+        <p class="text-muted mt-1" style="font-size: 0.9rem;">Kelola daftar hidangan dengan mudah</p>
     </div>
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#menuModal" onclick="document.getElementById('formAction').value='add'; document.getElementById('menuForm').reset(); document.getElementById('modalTitle').innerText='Add New Order';">
-        <i class="bi bi-plus-lg me-1"></i> Add Menu
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#menuModal" onclick="document.getElementById('formAction').value='add'; document.getElementById('menuForm').reset(); document.getElementById('modalTitle').innerText='Tambah Menu Baru';">
+        <i class="bi bi-plus-lg me-1"></i> Tambah Menu
     </button>
 </div>
 
@@ -80,11 +80,11 @@ $catColors = [
             <table class="table table-hover align-middle mb-0">
                 <thead>
                     <tr>
-                        <th class="ps-4">Preview</th>
-                        <th>Menu Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th class="text-end pe-4">Actions</th>
+                        <th class="ps-4">Pratinjau</th>
+                        <th>Nama Menu</th>
+                        <th>Kategori</th>
+                        <th>Harga</th>
+                        <th class="text-end pe-4">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,7 +108,7 @@ $catColors = [
                     </tr>
                     <?php endforeach; ?>
                     <?php if(empty($menus)): ?>
-                    <tr><td colspan="5" class="text-center py-5 text-muted">No menu items found. Get started by adding one.</td></tr>
+                    <tr><td colspan="5" class="text-center py-5 text-muted">Belum ada menu yang ditambahkan. Silakan mulai tambahkan hidangan.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>
@@ -122,7 +122,7 @@ $catColors = [
     <div class="modal-content" style="border-radius:20px; border:none; box-shadow:0 10px 40px rgba(0,0,0,0.1)">
       <form method="post" enctype="multipart/form-data" id="menuForm">
           <div class="modal-header border-0 bg-light rounded-top" style="border-radius:20px 20px 0 0; padding:20px 25px;">
-            <h5 class="modal-title fw-bold" id="modalTitle">Add Menu</h5>
+            <h5 class="modal-title fw-bold" id="modalTitle">Tambah Menu</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body p-4">
@@ -131,38 +131,38 @@ $catColors = [
                 <input type="hidden" name="current_image" id="currentImage">
                 
                 <div class="mb-3">
-                    <label class="form-label text-muted">Menu Name</label>
+                    <label class="form-label text-muted">Nama Menu</label>
                     <input type="text" name="name" id="menuName" class="form-control" required>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted">Category</label>
+                        <label class="form-label text-muted">Kategori</label>
                         <select name="category" id="menuCategory" class="form-select text-capitalize">
-                            <option value="starters">Starters</option>
-                            <option value="breakfast">Breakfast</option>
-                            <option value="lunch">Lunch</option>
-                            <option value="dinner">Dinner</option>
+                            <option value="starters">Hidangan Pembuka</option>
+                            <option value="breakfast">Sarapan</option>
+                            <option value="lunch">Makan Siang</option>
+                            <option value="dinner">Makan Malam</option>
                         </select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted">Price ($)</label>
+                        <label class="form-label text-muted">Harga ($)</label>
                         <input type="number" step="0.01" name="price" id="menuPrice" class="form-control" required>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label text-muted">Description</label>
+                    <label class="form-label text-muted">Deskripsi / Bahan</label>
                     <textarea name="description" id="menuDesc" class="form-control" rows="2"></textarea>
                 </div>
                 <div class="mb-4">
-                    <label class="form-label text-muted">Image</label>
+                    <label class="form-label text-muted">Gambar Utama</label>
                     <div class="input-group">
                         <input type="file" name="image" class="form-control" accept="image/*">
                     </div>
                 </div>
           </div>
           <div class="modal-footer border-0 p-4 pt-1">
-            <button type="button" class="btn btn-light rounded px-4" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary px-4"><i class="bi bi-save me-2"></i> Confirm</button>
+            <button type="button" class="btn btn-light rounded px-4" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary px-4"><i class="bi bi-save me-2"></i> Konfirmasi</button>
           </div>
       </form>
     </div>
@@ -175,7 +175,7 @@ $catColors = [
 
 <script>
 function editMenu(menu) {
-    document.getElementById('modalTitle').innerText = 'Update Menu details';
+    document.getElementById('modalTitle').innerText = 'Perbarui Detail Menu';
     document.getElementById('formAction').value = 'edit';
     document.getElementById('menuId').value = menu.id;
     document.getElementById('menuName').value = menu.name;

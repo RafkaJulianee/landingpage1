@@ -40,8 +40,8 @@ foreach ($settings_db as $row) {
 ?>
 <div class="d-flex justify-content-between align-items-center mb-4 pb-2">
     <div>
-        <h2 class="fw-bold mb-0">General Settings 👋</h2>
-        <p class="text-muted mt-1" style="font-size: 0.9rem;">Manage your store's core details</p>
+        <h2 class="fw-bold mb-0">Pengaturan Umum 👋</h2>
+        <p class="text-muted mt-1" style="font-size: 0.9rem;">Kelola detail utama website Anda</p>
     </div>
 </div>
 
@@ -58,51 +58,51 @@ foreach ($settings_db as $row) {
     <!-- Kolom 1: Teks General -->
     <div class="col-md-7">
         <div class="card">
-            <div class="card-header"><i class="bi bi-info-circle me-2 text-primary"></i> Basic Information</div>
+            <div class="card-header"><i class="bi bi-info-circle me-2 text-primary"></i> Informasi Dasar</div>
             <div class="card-body">
                 <div class="mb-4">
-                    <label class="form-label">Site Title</label>
+                    <label class="form-label">Judul Situs</label>
                     <input type="text" name="settings[site_title]" class="form-control" value="<?= htmlspecialchars($settings['site_title'] ?? '') ?>">
                 </div>
                 
                 <hr class="text-secondary opacity-25">
 
                 <div class="mb-4 mt-4">
-                    <label class="form-label">Hero Title <small class="text-muted fw-normal">(Use &lt;br&gt; for line break)</small></label>
+                    <label class="form-label">Judul Utama (Hero) <small class="text-muted fw-normal">(Gunakan &lt;br&gt; untuk baris baru)</small></label>
                     <textarea name="settings[hero_title]" class="form-control" rows="2"><?= htmlspecialchars($settings['hero_title'] ?? '') ?></textarea>
                 </div>
                 <div class="mb-4">
-                    <label class="form-label">Hero Subtitle</label>
+                    <label class="form-label">Teks Sub-Judul</label>
                     <textarea name="settings[hero_subtitle]" class="form-control" rows="3"><?= htmlspecialchars($settings['hero_subtitle'] ?? '') ?></textarea>
                 </div>
 
                 <hr class="text-secondary opacity-25">
 
                 <div class="mb-2 mt-4">
-                    <label class="form-label">About Us Story</label>
+                    <label class="form-label">Cerita Tentang Kami</label>
                     <textarea name="settings[about_text]" class="form-control" rows="5"><?= htmlspecialchars($settings['about_text'] ?? '') ?></textarea>
                 </div>
             </div>
         </div>
         
         <div class="card">
-            <div class="card-header"><i class="bi bi-telephone ms-2 text-primary"></i> Local Details</div>
+            <div class="card-header"><i class="bi bi-telephone ms-2 text-primary"></i> Detail Kontak</div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6 mb-4">
-                        <label class="form-label">Contact Phone</label>
+                        <label class="form-label">Nomor Telepon</label>
                         <input type="text" name="settings[contact_phone]" class="form-control" value="<?= htmlspecialchars($settings['contact_phone'] ?? '') ?>">
                     </div>
                     <div class="col-md-6 mb-4">
-                        <label class="form-label">Email Support</label>
+                        <label class="form-label">Email Dukungan</label>
                         <input type="text" name="settings[contact_email]" class="form-control" value="<?= htmlspecialchars($settings['contact_email'] ?? '') ?>">
                     </div>
                     <div class="col-md-12 mb-4">
-                        <label class="form-label">Physical Address</label>
+                        <label class="form-label">Alamat Fisik</label>
                         <textarea name="settings[contact_address]" class="form-control" rows="2"><?= htmlspecialchars($settings['contact_address'] ?? '') ?></textarea>
                     </div>
                     <div class="col-md-12 mb-2">
-                        <label class="form-label">Opening Hours</label>
+                        <label class="form-label">Jam Operasional</label>
                         <input type="text" name="settings[contact_opening_hours]" class="form-control" value="<?= htmlspecialchars($settings['contact_opening_hours'] ?? '') ?>">
                     </div>
                 </div>
@@ -117,13 +117,13 @@ foreach ($settings_db as $row) {
             <div class="card-body">
                 
                 <div class="mb-4">
-                    <label class="form-label d-block text-center text-md-start">Hero Billboard Image</label>
+                    <label class="form-label d-block text-center text-md-start">Gambar Layar Utama (Hero)</label>
                     <div class="p-4 rounded text-center mb-3" style="background:#fcfcff; border: 2px dashed #ececf1;">
                         <?php if(!empty($settings['hero_img'])): ?>
                             <img src="../<?= $settings['hero_img'] ?>" class="img-fluid rounded shadow-sm" style="max-height: 140px;">
                         <?php else: ?>
                             <i class="bi bi-image text-muted" style="font-size: 3rem;"></i><br>
-                            <span class="text-muted small">No custom image set</span>
+                            <span class="text-muted small">Belum ada gambar khusus</span>
                         <?php endif; ?>
                     </div>
                     <input type="file" name="hero_img" class="form-control" accept="image/*">
@@ -132,21 +132,21 @@ foreach ($settings_db as $row) {
                 <hr class="text-secondary opacity-25 my-4">
 
                 <div class="mb-5">
-                    <label class="form-label d-block text-center text-md-start">About Us Background</label>
+                    <label class="form-label d-block text-center text-md-start">Gambar Latar Tentang Kami</label>
                     <div class="p-4 rounded text-center mb-3" style="background:#fcfcff; border: 2px dashed #ececf1;">
                         <?php if(!empty($settings['about_img'])): ?>
                             <img src="../<?= $settings['about_img'] ?>" class="img-fluid rounded shadow-sm" style="max-height: 140px;">
                         <?php else: ?>
                             <i class="bi bi-image text-muted" style="font-size: 3rem;"></i><br>
-                            <span class="text-muted small">No custom image set</span>
+                            <span class="text-muted small">Belum ada gambar khusus</span>
                         <?php endif; ?>
                     </div>
                     <input type="file" name="about_img" class="form-control" accept="image/*">
                 </div>
 
                 <div class="d-grid mt-4">
-                    <button type="submit" class="btn btn-primary btn-lg"><i class="bi bi-save me-2"></i> Save Preferences</button>
-                    <a href="../index.php" target="_blank" class="btn btn-outline-secondary mt-3">Preview Frontend</a>
+                    <button type="submit" class="btn btn-primary btn-lg"><i class="bi bi-save me-2"></i> Simpan Pengaturan</button>
+                    <a href="../index.php" target="_blank" class="btn btn-outline-secondary mt-3">Pratinjau Website</a>
                 </div>
             </div>
         </div>

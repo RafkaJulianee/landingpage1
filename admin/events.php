@@ -39,12 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
         if(empty($imagePath)) $imagePath = 'assets/img/events-1.jpg'; // default
         $stmt = $pdo->prepare("INSERT INTO events (title, price, description, image) VALUES (?, ?, ?, ?)");
         $stmt->execute([$title, $price, $description, $imagePath]);
-        $success = "New Event added successfully!";
+        $success = "Acara baru berhasil ditambahkan!";
     } elseif ($_POST['action'] == 'edit') {
         $id = (int)$_POST['id'];
         $stmt = $pdo->prepare("UPDATE events SET title=?, price=?, description=?, image=? WHERE id=?");
         $stmt->execute([$title, $price, $description, $imagePath, $id]);
-        $success = "Event updated!";
+        $success = "Acara berhasil diperbarui!";
     }
 }
 
@@ -53,11 +53,11 @@ $events = $stmt->fetchAll();
 ?>
 <div class="d-flex justify-content-between align-items-center mb-4 pb-2">
     <div>
-        <h2 class="fw-bold mb-0">Events Schedule 🗓️</h2>
-        <p class="text-muted mt-1" style="font-size: 0.9rem;">Maintain special occasions easily</p>
+        <h2 class="fw-bold mb-0">Jadwal Acara 🗓️</h2>
+        <p class="text-muted mt-1" style="font-size: 0.9rem;">Kelola detail acara spesial dengan mudah</p>
     </div>
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal" onclick="document.getElementById('formAction').value='add'; document.getElementById('eventForm').reset(); document.getElementById('modalTitle').innerText='Create New Event';">
-        <i class="bi bi-calendar-plus me-1"></i> Add Event
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal" onclick="document.getElementById('formAction').value='add'; document.getElementById('eventForm').reset(); document.getElementById('modalTitle').innerText='Buat Acara Baru';">
+        <i class="bi bi-calendar-plus me-1"></i> Tambah Acara
     </button>
 </div>
 
@@ -71,11 +71,11 @@ $events = $stmt->fetchAll();
             <table class="table table-hover align-middle mb-0">
                 <thead>
                     <tr>
-                        <th class="ps-4">Banner Preview</th>
-                        <th>Event Title</th>
-                        <th>Pricing Scheme</th>
-                        <th>Brief description</th>
-                        <th class="text-end pe-4">Actions</th>
+                        <th class="ps-4">Pratinjau Banner</th>
+                        <th>Judul Acara</th>
+                        <th>Skema Harga</th>
+                        <th>Deskripsi Singkat</th>
+                        <th class="text-end pe-4">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,7 +98,7 @@ $events = $stmt->fetchAll();
                     </tr>
                     <?php endforeach; ?>
                     <?php if(empty($events)): ?>
-                    <tr><td colspan="5" class="text-center py-5 text-muted">No events found. Time to organize a party!</td></tr>
+                    <tr><td colspan="5" class="text-center py-5 text-muted">Belum ada acara yang ditambahkan. Saatnya merencanakan pesta!</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>
@@ -112,7 +112,7 @@ $events = $stmt->fetchAll();
     <div class="modal-content" style="border-radius:20px; border:none; box-shadow:0 10px 40px rgba(0,0,0,0.1)">
       <form method="post" enctype="multipart/form-data" id="eventForm">
           <div class="modal-header border-0 bg-light rounded-top" style="border-radius:20px 20px 0 0; padding:20px 25px;">
-            <h5 class="modal-title fw-bold" id="modalTitle">Add Event</h5>
+            <h5 class="modal-title fw-bold" id="modalTitle">Tambah Acara</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body p-4">
@@ -121,26 +121,26 @@ $events = $stmt->fetchAll();
                 <input type="hidden" name="current_image" id="currentImage">
                 
                 <div class="mb-4">
-                    <label class="form-label text-muted">Event Title</label>
-                    <input type="text" name="title" id="eventTitle" class="form-control" placeholder="e.g. Birthday Bash" required>
+                    <label class="form-label text-muted">Judul Acara</label>
+                    <input type="text" name="title" id="eventTitle" class="form-control" placeholder="Cth. Pesta Ulang Tahun" required>
                 </div>
                 <div class="mb-4">
-                    <label class="form-label text-muted">Ticket Price / Package ($)</label>
-                    <input type="number" step="1" name="price" id="eventPrice" class="form-control" placeholder="0 if free" required>
+                    <label class="form-label text-muted">Harga Tiket / Paket ($)</label>
+                    <input type="number" step="1" name="price" id="eventPrice" class="form-control" placeholder="0 jika gratis" required>
                 </div>
                 <div class="mb-4">
-                    <label class="form-label text-muted">Description & Details</label>
-                    <textarea name="description" id="eventDesc" class="form-control" rows="4" placeholder="Briefly describe the occasion..." required></textarea>
+                    <label class="form-label text-muted">Keterangan & Detail</label>
+                    <textarea name="description" id="eventDesc" class="form-control" rows="4" placeholder="Deskripsikan acara secara singkat..." required></textarea>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label text-muted">Event Photo Banner</label>
+                    <label class="form-label text-muted">Foto Banner Acara</label>
                     <input type="file" name="image" class="form-control" accept="image/*">
-                    <small class="text-muted mt-2 d-block">Optimized for wide/landscape resolutions</small>
+                    <small class="text-muted mt-2 d-block">Direkomendasikan menggunakan rasio lanskap/lebar yang berkualitas baik</small>
                 </div>
           </div>
           <div class="modal-footer border-0 p-4 pt-1">
-            <button type="button" class="btn btn-light rounded px-4" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary px-4"><i class="bi bi-calendar-check me-2"></i> Save Event</button>
+            <button type="button" class="btn btn-light rounded px-4" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary px-4"><i class="bi bi-calendar-check me-2"></i> Simpan Acara</button>
           </div>
       </form>
     </div>
@@ -153,7 +153,7 @@ $events = $stmt->fetchAll();
 
 <script>
 function editEvent(event) {
-    document.getElementById('modalTitle').innerText = 'Update Event Details';
+    document.getElementById('modalTitle').innerText = 'Perbarui Detail Acara';
     document.getElementById('formAction').value = 'edit';
     document.getElementById('eventId').value = event.id;
     document.getElementById('eventTitle').value = event.title;
