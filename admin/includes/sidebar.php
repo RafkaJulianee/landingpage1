@@ -17,9 +17,29 @@
                             <i class="bi bi-card-checklist"></i> <span class="d-none d-sm-inline">Daftar Menu</span>
                         </a>
                     </li>
-                    <li class="w-100 mb-4">
+                    <li class="w-100 mb-2">
                         <a href="events.php" class="nav-link">
                             <i class="bi bi-calendar2-star-fill"></i> <span class="d-none d-sm-inline">Daftar Acara</span>
+                        </a>
+                    </li>
+                    <li class="w-100 mb-2">
+                        <a href="chefs.php" class="nav-link">
+                            <i class="bi bi-person-badge-fill"></i> <span class="d-none d-sm-inline">Daftar Koki</span>
+                        </a>
+                    </li>
+                    <li class="w-100 mb-2">
+                        <a href="testimonials.php" class="nav-link">
+                            <i class="bi bi-chat-left-quote-fill"></i> <span class="d-none d-sm-inline">Testimoni</span>
+                        </a>
+                    </li>
+                    <li class="w-100 mb-2">
+                        <a href="gallery.php" class="nav-link">
+                            <i class="bi bi-images"></i> <span class="d-none d-sm-inline">Galeri Foto</span>
+                        </a>
+                    </li>
+                    <li class="w-100 mb-4">
+                        <a href="settings_home.php" class="nav-link">
+                            <i class="bi bi-layout-text-window-reverse"></i> <span class="d-none d-sm-inline">Teks Website</span>
                         </a>
                     </li>
                     
