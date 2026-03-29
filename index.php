@@ -54,12 +54,12 @@ while ($row = $stmt->fetch()) {
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">Beranda</a></li>
-          <li><a href="#about">Tentang Kami</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#events">Acara</a></li>
-          <li><a href="#chefs">Koki</a></li>
-          <li><a href="#gallery">Galeri</a></li>
+          <li><a href="#hero"><?= htmlspecialchars($settings['text_nav_home'] ?? 'Beranda') ?></a></li>
+          <li><a href="#about"><?= htmlspecialchars($settings['text_nav_about'] ?? 'Tentang Kami') ?></a></li>
+          <li><a href="#menu"><?= htmlspecialchars($settings['text_nav_menu'] ?? 'Menu') ?></a></li>
+          <li><a href="#events"><?= htmlspecialchars($settings['text_nav_events'] ?? 'Acara') ?></a></li>
+          <li><a href="#chefs"><?= htmlspecialchars($settings['text_nav_chefs'] ?? 'Koki') ?></a></li>
+          <li><a href="#gallery"><?= htmlspecialchars($settings['text_nav_gallery'] ?? 'Galeri') ?></a></li>
           <li class="dropdown"><a href="#"><span>Menu Utama</span> <i
                 class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
@@ -79,11 +79,11 @@ while ($row = $stmt->fetch()) {
               <li><a href="#">Menu Utama 4</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Kontak</a></li>
+          <li><a href="#contact"><?= htmlspecialchars($settings['text_nav_contact'] ?? 'Kontak') ?></a></li>
         </ul>
       </nav><!-- .navbar -->
 
-      <a class="btn-book-a-table" href="#book-a-table">Pesan Meja</a>
+      <a class="btn-book-a-table" href="#book-a-table"><?= htmlspecialchars($settings['text_nav_book'] ?? 'Pesan Meja') ?></a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
@@ -96,11 +96,11 @@ while ($row = $stmt->fetch()) {
       <div class="row justify-content-between gy-5">
         <div
           class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-          <h2 data-aos="fade-up"><?= $settings['hero_title'] ?? 'Nikmati Makanan Sehat<br>& Lezat Kami' ?></h2>
+          <h2 data-aos="fade-up"><?= $settings['hero_title'] ?? '<?= $settings['hero_title'] ?? 'Nikmati Makanan Sehat<br>& Lezat Kami' ?>' ?></h2>
           <p data-aos="fade-up" data-aos-delay="100"><?= htmlspecialchars($settings['hero_subtitle'] ?? '') ?></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#book-a-table" class="btn-book-a-table">Pesan Meja</a>
-            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
+            <a href="#book-a-table" class="btn-book-a-table"><?= htmlspecialchars($settings['text_nav_book'] ?? 'Pesan Meja') ?></a>
+            <a href="<?= htmlspecialchars($settings['about_video_link'] ?? 'https://www.youtube.com/watch?v=LXb3EKWsInQ') ?>"
               class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch
                 Video</span></a>
           </div>
@@ -120,7 +120,7 @@ while ($row = $stmt->fetch()) {
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Tentang Kami</h2>
+          <h2><?= htmlspecialchars($settings['text_nav_about'] ?? 'Tentang Kami') ?></h2>
           <p>Pelajari Lebih Lanjut <span>Tentang Kami</span></p>
         </div>
 
@@ -129,8 +129,8 @@ while ($row = $stmt->fetch()) {
           <div class="col-lg-7 position-relative about-img" style="background-image: url(<?= htmlspecialchars($about_img_path) ?>) ;"
             data-aos="fade-up" data-aos-delay="150">
             <div class="call-us position-absolute">
-              <h4>Pesan Meja</h4>
-              <p>+1 5589 55488 55</p>
+              <h4><?= htmlspecialchars($settings['text_nav_book'] ?? 'Pesan Meja') ?></h4>
+              <p><?= htmlspecialchars($settings['contact_phone'] ?? '+1 5589 55488 55') ?></p>
             </div>
           </div>
           <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
@@ -141,9 +141,9 @@ while ($row = $stmt->fetch()) {
                 magna aliqua.
               </p>
               <ul>
-                <li><i class="bi bi-check2-all"></i> Bahan-bahan segar yang dimasak dengan penuh cinta dan dedikasi.</li>
-                <li><i class="bi bi-check2-all"></i> Suasana restoran yang nyaman untuk setiap perayaan Anda.</li>
-                <li><i class="bi bi-check2-all"></i> Bahan-bahan segar yang dimasak dengan penuh cinta dan dedikasi. Duis aute
+                <li><i class="bi bi-check2-all"></i> <?= htmlspecialchars($settings['about_point_1'] ?? 'Bahan-bahan segar yang dimasak dengan penuh cinta dan dedikasi.') ?></li>
+                <li><i class="bi bi-check2-all"></i> <?= htmlspecialchars($settings['about_point_2'] ?? 'Suasana restoran yang nyaman untuk setiap perayaan Anda.') ?></li>
+                <li><i class="bi bi-check2-all"></i> <?= htmlspecialchars($settings['about_point_1'] ?? 'Bahan-bahan segar yang dimasak dengan penuh cinta dan dedikasi.') ?> Duis aute
                   irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla
                   pariatur.</li>
               </ul>
@@ -153,7 +153,7 @@ while ($row = $stmt->fetch()) {
 
               <div class="position-relative mt-4">
                 <img src="assets/img/about-2.jpg" class="img-fluid" alt="">
-                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+                <a href="<?= htmlspecialchars($settings['about_video_link'] ?? 'https://www.youtube.com/watch?v=LXb3EKWsInQ') ?>" class="glightbox play-btn"></a>
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@ while ($row = $stmt->fetch()) {
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="why-box">
-              <h3>Why Choose Yummy?</h3>
+              <h3><?= htmlspecialchars($settings['why_us_title'] ?? 'Mengapa Memilih Kami?') ?></h3>
               <p>
                 Kami percaya bahwa makanan bukan sekadar pengisi perut, melainkan pengalaman yang patut dirayakan., consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Duis aute irure dolor in reprehenderit
@@ -189,24 +189,24 @@ while ($row = $stmt->fetch()) {
               <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                   <i class="bi bi-clipboard-data"></i>
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  <h4><?= htmlspecialchars($settings['why_us_box1_title'] ?? 'Kualitas Premium') ?></h4>
+                  <p><?= htmlspecialchars($settings['why_us_box1_desc'] ?? 'Hanya bahan terbaik.') ?></p>
                 </div>
               </div><!-- End Icon Box -->
 
               <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                   <i class="bi bi-gem"></i>
-                  <h4>Ullamco laboris ladore pan</h4>
-                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                  <h4><?= htmlspecialchars($settings['why_us_box2_title'] ?? 'Resep Asli') ?></h4>
+                  <p><?= htmlspecialchars($settings['why_us_box2_desc'] ?? 'Rahasia turun temurun.') ?></p>
                 </div>
               </div><!-- End Icon Box -->
 
               <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                   <i class="bi bi-inboxes"></i>
-                  <h4>Labore consequatur incidid dolore</h4>
-                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                  <h4><?= htmlspecialchars($settings['why_us_box3_title'] ?? 'Koki Handal') ?></h4>
+                  <p><?= htmlspecialchars($settings['why_us_box3_desc'] ?? 'Profesional bersertifikasi.') ?></p>
                 </div>
               </div><!-- End Icon Box -->
 
@@ -226,33 +226,33 @@ while ($row = $stmt->fetch()) {
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+              <span data-purecounter-start="0" data-purecounter-end="<?= (int)($settings['stats_1_num'] ?? 232) ?>" data-purecounter-duration="1"
                 class="purecounter"></span>
-              <p>Pelanggan</p>
+              <p><?= htmlspecialchars($settings['stats_1_label'] ?? 'Pelanggan') ?></p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+              <span data-purecounter-start="0" data-purecounter-end="<?= (int)($settings['stats_2_num'] ?? 521) ?>" data-purecounter-duration="1"
                 class="purecounter"></span>
-              <p>Proyek</p>
+              <p><?= htmlspecialchars($settings['stats_2_label'] ?? 'Proyek') ?></p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
+              <span data-purecounter-start="0" data-purecounter-end="<?= (int)($settings['stats_3_num'] ?? 1453) ?>" data-purecounter-duration="1"
                 class="purecounter"></span>
-              <p>Jam Layanan</p>
+              <p><?= htmlspecialchars($settings['stats_3_label'] ?? 'Jam Layanan') ?></p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
+              <span data-purecounter-start="0" data-purecounter-end="<?= (int)($settings['stats_4_num'] ?? 32) ?>" data-purecounter-duration="1"
                 class="purecounter"></span>
-              <p>Karyawan</p>
+              <p><?= htmlspecialchars($settings['stats_4_label'] ?? 'Karyawan Penuh') ?></p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -351,22 +351,37 @@ while ($row = $stmt->fetch()) {
         <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
         <div class="swiper-wrapper">
           <?php
-            $stmt_ev = $pdo->query("SELECT * FROM events");
-            $events = $stmt_ev->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = $pdo->query("SELECT * FROM testimonials");
+            $testimonials = $stmt->fetchAll();
           ?>
-          <?php foreach ($events as $event): ?>
-          <div class="swiper-slide event-item d-flex flex-column justify-content-end"
-            style="background-image: url(<?= htmlspecialchars($event['image']) ?>)">
-            <h3><?= htmlspecialchars($event['title']) ?></h3>
-            <div class="price align-self-start">$<?= htmlspecialchars($event['price']) ?></div>
-            <p class="description">
-              <?= htmlspecialchars($event['description']) ?>
-            </p>
-          </div><!-- End Event item -->
+          <?php foreach ($testimonials as $t): ?>
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <div class="row gy-4 justify-content-center">
+                <div class="col-lg-6">
+                  <div class="testimonial-content">
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <?= htmlspecialchars($t['content']) ?>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                    <h3><?= htmlspecialchars($t['name']) ?></h3>
+                    <h4><?= htmlspecialchars($t['role']) ?></h4>
+                    <div class="stars">
+                      <?php for($i=0; $i<$t['rating']; $i++): ?><i class="bi bi-star-fill"></i><?php endfor; ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2 text-center">
+                  <img src="<?= htmlspecialchars($t['image']) ?>" class="img-fluid testimonial-img" alt="" style="border-radius: 50%; border: 4px solid rgba(255, 255, 255, 0.2); width: 120px; height: 120px; object-fit: cover;">
+                </div>
+              </div>
+            </div>
+          </div><!-- End testimonial item -->
           <?php endforeach; ?>
         </div>
-          <div class="swiper-pagination"></div>
-        </div>
+        <div class="swiper-pagination"></div>
+      </div>
 
       </div>
     </section><!-- End Testimonials Section -->
@@ -413,67 +428,30 @@ while ($row = $stmt->fetch()) {
         </div>
 
         <div class="row gy-4">
-
+          <?php
+            $stmt = $pdo->query("SELECT * FROM chefs ORDER BY id ASC");
+            $chefs = $stmt->fetchAll();
+          ?>
+          <?php foreach($chefs as $chef): ?>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="chef-member">
               <div class="member-img">
-                <img src="assets/img/chefs/chefs-1.jpg" class="img-fluid" alt="">
+                <img src="<?= htmlspecialchars($chef['image']) ?>" class="img-fluid" alt="">
                 <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <?php if($chef['social_twitter']): ?><a href="<?= htmlspecialchars($chef['social_twitter']) ?>"><i class="bi bi-twitter"></i></a><?php endif; ?>
+                  <?php if($chef['social_fb']): ?><a href="<?= htmlspecialchars($chef['social_fb']) ?>"><i class="bi bi-facebook"></i></a><?php endif; ?>
+                  <?php if($chef['social_ig']): ?><a href="<?= htmlspecialchars($chef['social_ig']) ?>"><i class="bi bi-instagram"></i></a><?php endif; ?>
+                  <?php if($chef['social_linkedin']): ?><a href="<?= htmlspecialchars($chef['social_linkedin']) ?>"><i class="bi bi-linkedin"></i></a><?php endif; ?>
                 </div>
               </div>
               <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Koki Utama</span>
-                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum
-                  exercitationem iure minima enim corporis et voluptate.</p>
+                <h4><?= htmlspecialchars($chef['name']) ?></h4>
+                <span><?= htmlspecialchars($chef['role']) ?></span>
+                <p><?= htmlspecialchars($chef['description']) ?></p>
               </div>
             </div>
-          </div><!-- End Chefs Member -->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="chef-member">
-              <div class="member-img">
-                <img src="assets/img/chefs/chefs-2.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Ahli Pastry</span>
-                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis.
-                  Voluptate sed quas reiciendis animi neque sapiente.</p>
-              </div>
-            </div>
-          </div><!-- End Chefs Member -->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="chef-member">
-              <div class="member-img">
-                <img src="assets/img/chefs/chefs-3.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Koki</span>
-                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut
-                  architecto porro aspernatur molestiae modi.</p>
-              </div>
-            </div>
-          </div><!-- End Chefs Member -->
-
+          </div>
+          <?php endforeach; ?>
         </div>
 
       </div>
@@ -558,30 +536,13 @@ while ($row = $stmt->fetch()) {
 
         <div class="gallery-slider swiper">
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                href="assets/img/gallery/gallery-1.jpg"><img src="assets/img/gallery/gallery-1.jpg" class="img-fluid"
-                  alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                href="assets/img/gallery/gallery-2.jpg"><img src="assets/img/gallery/gallery-2.jpg" class="img-fluid"
-                  alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                href="assets/img/gallery/gallery-3.jpg"><img src="assets/img/gallery/gallery-3.jpg" class="img-fluid"
-                  alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                href="assets/img/gallery/gallery-4.jpg"><img src="assets/img/gallery/gallery-4.jpg" class="img-fluid"
-                  alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                href="assets/img/gallery/gallery-5.jpg"><img src="assets/img/gallery/gallery-5.jpg" class="img-fluid"
-                  alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                href="assets/img/gallery/gallery-6.jpg"><img src="assets/img/gallery/gallery-6.jpg" class="img-fluid"
-                  alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                href="assets/img/gallery/gallery-7.jpg"><img src="assets/img/gallery/gallery-7.jpg" class="img-fluid"
-                  alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                href="assets/img/gallery/gallery-8.jpg"><img src="assets/img/gallery/gallery-8.jpg" class="img-fluid"
-                  alt=""></a></div>
+            <?php
+              $stmt = $pdo->query("SELECT * FROM gallery ORDER BY id DESC");
+              $galleries = $stmt->fetchAll();
+            ?>
+            <?php foreach($galleries as $g): ?>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="<?= htmlspecialchars($g['image']) ?>"><img src="<?= htmlspecialchars($g['image']) ?>" class="img-fluid" alt=""></a></div>
+            <?php endforeach; ?>
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -729,11 +690,11 @@ while ($row = $stmt->fetch()) {
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Yummy</span></strong>. Hak Cipta Dilindungi
+        &copy; Copyright <strong><span><?= htmlspecialchars($settings['footer_copyright'] ?? 'Yummy') ?></span></strong>. Hak Cipta Dilindungi
       </div>
       <div class="credits">
 
-        Didesain oleh <a href="https://bootstrapmade.com/">Webdevelopment657</a>
+        <?= htmlspecialchars($settings['footer_slogan'] ?? 'Kami menanti kedatangan Anda kembali.') ?>
       </div>
     </div>
 
