@@ -40,20 +40,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="login-box">
-        <h3 class="text-center mb-4">Admin Login</h3>
+        <h3 class="text-center mb-4">Login Admin</h3>
         <?php if ($error): ?>
             <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
         <form method="post">
             <div class="mb-3">
-                <label>Username</label>
+                <label>Nama Pengguna</label>
                 <input type="text" name="username" class="form-control" placeholder="admin" required>
             </div>
             <div class="mb-3">
-                <label>Password</label>
+                <label>Kata Sandi</label>
                 <input type="password" name="password" class="form-control" placeholder="password" required>
             </div>
-            <button type="submit" class="btn btn-danger w-100">Log In</button>
+            <button type="submit" class="btn btn-danger w-100">Masuk</button>
         </form>
     </div>
 </body>
