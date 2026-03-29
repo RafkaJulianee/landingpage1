@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['settings'])) {
             }
         }
     }
-    $success = "Pengaturan berhasil disimpan!";
+    $success = "Settings successfully updated!";
 }
 
 $stmt = $pdo->query("SELECT setting_key, setting_value FROM settings");
@@ -38,9 +38,11 @@ foreach ($settings_db as $row) {
     $settings[$row['setting_key']] = $row['setting_value'];
 }
 ?>
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="fw-bold text-dark">General Settings</h2>
-    <span class="text-muted"><i class="bi bi-calendar"></i> <?php echo date('d M Y'); ?></span>
+<div class="d-flex justify-content-between align-items-center mb-4 pb-2">
+    <div>
+        <h2 class="fw-bold mb-0">General Settings 👋</h2>
+        <p class="text-muted mt-1" style="font-size: 0.9rem;">Manage your store's core details</p>
+    </div>
 </div>
 
 <?php if ($success): ?>
@@ -56,58 +58,52 @@ foreach ($settings_db as $row) {
     <!-- Kolom 1: Teks General -->
     <div class="col-md-7">
         <div class="card">
-            <div class="card-header"><i class="bi bi-info-square me-2 text-danger"></i> Site Information</div>
+            <div class="card-header"><i class="bi bi-info-circle me-2 text-primary"></i> Basic Information</div>
             <div class="card-body">
-                <div class="mb-1">
-                    <label class="form-label text-muted fw-bold">Site Title</label>
-                    <input type="text" name="settings[site_title]" class="form-control bg-light" value="<?= htmlspecialchars($settings['site_title'] ?? '') ?>">
+                <div class="mb-4">
+                    <label class="form-label">Site Title</label>
+                    <input type="text" name="settings[site_title]" class="form-control" value="<?= htmlspecialchars($settings['site_title'] ?? '') ?>">
                 </div>
-            </div>
-        </div>
+                
+                <hr class="text-secondary opacity-25">
 
-        <div class="card">
-            <div class="card-header"><i class="bi bi-layout-text-window-reverse me-2 text-danger"></i> Hero Section</div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <label class="form-label text-muted fw-bold">Hero Title (Use &lt;br&gt; for line break)</label>
-                    <textarea name="settings[hero_title]" class="form-control bg-light" rows="2"><?= htmlspecialchars($settings['hero_title'] ?? '') ?></textarea>
+                <div class="mb-4 mt-4">
+                    <label class="form-label">Hero Title <small class="text-muted fw-normal">(Use &lt;br&gt; for line break)</small></label>
+                    <textarea name="settings[hero_title]" class="form-control" rows="2"><?= htmlspecialchars($settings['hero_title'] ?? '') ?></textarea>
                 </div>
-                <div class="mb-1">
-                    <label class="form-label text-muted fw-bold">Hero Subtitle</label>
-                    <textarea name="settings[hero_subtitle]" class="form-control bg-light" rows="3"><?= htmlspecialchars($settings['hero_subtitle'] ?? '') ?></textarea>
+                <div class="mb-4">
+                    <label class="form-label">Hero Subtitle</label>
+                    <textarea name="settings[hero_subtitle]" class="form-control" rows="3"><?= htmlspecialchars($settings['hero_subtitle'] ?? '') ?></textarea>
                 </div>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header"><i class="bi bi-file-person me-2 text-danger"></i> About Section</div>
-            <div class="card-body">
-                <div class="mb-1">
-                    <label class="form-label text-muted fw-bold">About Us Text</label>
-                    <textarea name="settings[about_text]" class="form-control bg-light" rows="5"><?= htmlspecialchars($settings['about_text'] ?? '') ?></textarea>
+                <hr class="text-secondary opacity-25">
+
+                <div class="mb-2 mt-4">
+                    <label class="form-label">About Us Story</label>
+                    <textarea name="settings[about_text]" class="form-control" rows="5"><?= htmlspecialchars($settings['about_text'] ?? '') ?></textarea>
                 </div>
             </div>
         </div>
         
         <div class="card">
-            <div class="card-header"><i class="bi bi-telephone ms-2 text-danger"></i> Contact Information</div>
+            <div class="card-header"><i class="bi bi-telephone ms-2 text-primary"></i> Local Details</div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted fw-bold">Phone</label>
-                        <input type="text" name="settings[contact_phone]" class="form-control bg-light" value="<?= htmlspecialchars($settings['contact_phone'] ?? '') ?>">
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label">Contact Phone</label>
+                        <input type="text" name="settings[contact_phone]" class="form-control" value="<?= htmlspecialchars($settings['contact_phone'] ?? '') ?>">
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted fw-bold">Email</label>
-                        <input type="text" name="settings[contact_email]" class="form-control bg-light" value="<?= htmlspecialchars($settings['contact_email'] ?? '') ?>">
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label">Email Support</label>
+                        <input type="text" name="settings[contact_email]" class="form-control" value="<?= htmlspecialchars($settings['contact_email'] ?? '') ?>">
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <label class="form-label text-muted fw-bold">Address</label>
-                        <textarea name="settings[contact_address]" class="form-control bg-light" rows="2"><?= htmlspecialchars($settings['contact_address'] ?? '') ?></textarea>
+                    <div class="col-md-12 mb-4">
+                        <label class="form-label">Physical Address</label>
+                        <textarea name="settings[contact_address]" class="form-control" rows="2"><?= htmlspecialchars($settings['contact_address'] ?? '') ?></textarea>
                     </div>
-                    <div class="col-md-12 mb-1">
-                        <label class="form-label text-muted fw-bold">Opening Hours</label>
-                        <input type="text" name="settings[contact_opening_hours]" class="form-control bg-light" value="<?= htmlspecialchars($settings['contact_opening_hours'] ?? '') ?>">
+                    <div class="col-md-12 mb-2">
+                        <label class="form-label">Opening Hours</label>
+                        <input type="text" name="settings[contact_opening_hours]" class="form-control" value="<?= htmlspecialchars($settings['contact_opening_hours'] ?? '') ?>">
                     </div>
                 </div>
             </div>
@@ -116,45 +112,41 @@ foreach ($settings_db as $row) {
 
     <!-- Kolom 2: Image Uploads -->
     <div class="col-md-5">
-        <div class="card shadow-sm border-0">
-            <div class="card-header bg-dark text-white border-0"><i class="bi bi-images me-2"></i> Media Uploads</div>
-            <div class="card-body bg-white rounded-bottom">
+        <div class="card" style="position: sticky; top: 10px;">
+            <div class="card-header border-0"><i class="bi bi-images me-2 text-primary"></i> Multimedia</div>
+            <div class="card-body">
                 
                 <div class="mb-4">
-                    <label class="form-label text-muted fw-bold d-block">Hero Image (Beside Hero Text)</label>
-                    <?php if(!empty($settings['hero_img'])): ?>
-                        <div class="mb-3 text-center bg-light p-3 rounded">
-                            <img src="../<?= $settings['hero_img'] ?>" class="img-fluid rounded shadow-sm" style="max-height: 150px;">
-                        </div>
-                    <?php else: ?>
-                        <div class="mb-3 text-center bg-light p-3 rounded text-muted">
-                           <i class="bi bi-image" style="font-size: 3rem;"></i><br> Default Image Active
-                        </div>
-                    <?php endif; ?>
+                    <label class="form-label d-block text-center text-md-start">Hero Billboard Image</label>
+                    <div class="p-4 rounded text-center mb-3" style="background:#fcfcff; border: 2px dashed #ececf1;">
+                        <?php if(!empty($settings['hero_img'])): ?>
+                            <img src="../<?= $settings['hero_img'] ?>" class="img-fluid rounded shadow-sm" style="max-height: 140px;">
+                        <?php else: ?>
+                            <i class="bi bi-image text-muted" style="font-size: 3rem;"></i><br>
+                            <span class="text-muted small">No custom image set</span>
+                        <?php endif; ?>
+                    </div>
                     <input type="file" name="hero_img" class="form-control" accept="image/*">
-                    <small class="text-muted fst-italic">Leave empty to keep current image</small>
                 </div>
 
-                <hr class="text-secondary border-dashed my-4">
+                <hr class="text-secondary opacity-25 my-4">
 
-                <div class="mb-4">
-                    <label class="form-label text-muted fw-bold d-block">About Background Image</label>
-                    <?php if(!empty($settings['about_img'])): ?>
-                        <div class="mb-3 text-center bg-light p-3 rounded">
-                            <img src="../<?= $settings['about_img'] ?>" class="img-fluid rounded shadow-sm" style="max-height: 150px;">
-                        </div>
-                    <?php else: ?>
-                        <div class="mb-3 text-center bg-light p-3 rounded text-muted">
-                           <i class="bi bi-image" style="font-size: 3rem;"></i><br> Default Image Active
-                        </div>
-                    <?php endif; ?>
+                <div class="mb-5">
+                    <label class="form-label d-block text-center text-md-start">About Us Background</label>
+                    <div class="p-4 rounded text-center mb-3" style="background:#fcfcff; border: 2px dashed #ececf1;">
+                        <?php if(!empty($settings['about_img'])): ?>
+                            <img src="../<?= $settings['about_img'] ?>" class="img-fluid rounded shadow-sm" style="max-height: 140px;">
+                        <?php else: ?>
+                            <i class="bi bi-image text-muted" style="font-size: 3rem;"></i><br>
+                            <span class="text-muted small">No custom image set</span>
+                        <?php endif; ?>
+                    </div>
                     <input type="file" name="about_img" class="form-control" accept="image/*">
-                    <small class="text-muted fst-italic">Leave empty to keep current image</small>
                 </div>
 
-                <div class="d-grid mt-5">
-                    <button type="submit" class="btn btn-danger btn-lg shadow-sm"><i class="bi bi-save me-2"></i> Save All Changes</button>
-                    <a href="../index.php" target="_blank" class="btn btn-outline-secondary mt-3">Preview Website</a>
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg"><i class="bi bi-save me-2"></i> Save Preferences</button>
+                    <a href="../index.php" target="_blank" class="btn btn-outline-secondary mt-3">Preview Frontend</a>
                 </div>
             </div>
         </div>
