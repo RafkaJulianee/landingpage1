@@ -96,7 +96,7 @@ while ($row = $stmt->fetch()) {
       <div class="row justify-content-between gy-5">
         <div
           class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-          <h2 data-aos="fade-up"><?= $settings['hero_title'] ?? '<?= $settings['hero_title'] ?? 'Nikmati Makanan Sehat<br>& Lezat Kami' ?>' ?></h2>
+          <h2 data-aos="fade-up"><?= $settings['hero_title'] ?? 'Nikmati Makanan Sehat<br>& Lezat Kami' ?></h2>
           <p data-aos="fade-up" data-aos-delay="100"><?= htmlspecialchars($settings['hero_subtitle'] ?? '') ?></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="#book-a-table" class="btn-book-a-table"><?= htmlspecialchars($settings['text_nav_book'] ?? 'Pesan Meja') ?></a>
@@ -281,7 +281,8 @@ while ($row = $stmt->fetch()) {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
               <h4>Sarapan</h4>
-            </a><!-- End tab nav item -->
+            </a>
+          </li><!-- End tab nav item -->
 
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
